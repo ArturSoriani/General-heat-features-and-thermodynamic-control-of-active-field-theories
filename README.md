@@ -1,5 +1,5 @@
 # General heat features and thermodynamic control of active field theories
-Artur Soriani, Elsen Tjhung, Étienne Fodor, and Artur Soriani
+Artur Soriani, Elsen Tjhung, Étienne Fodor, and Tomer Markovich
 
 ## Description
 Python script required to reproduce all numerical simulations presented in the paper "General heat features and thermodynamic control of active field theories".
