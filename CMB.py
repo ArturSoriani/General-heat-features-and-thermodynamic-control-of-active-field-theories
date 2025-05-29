@@ -1,4 +1,4 @@
-# Python script required to required to reproduce all numerical simulations presented in the paper "General heat features and thermodynamic control of active field theories"
+# Python script required to required to reproduce all numerical simulations presented in the paper "Control of active field theories at minimal dissipation"
 # Source code by Artur Soriani
 # In a terminal with python 3.10.2, use
 # 'python CMB.py a0 atau b phibar betaF betaDelta'
