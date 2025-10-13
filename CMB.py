@@ -352,7 +352,12 @@ if not os.path.exists(outputPath): os.makedirs(outputPath)
 if not os.path.exists(outputPath+'/optimalProtocols'): os.makedirs(outputPath+'/optimalProtocols')
 
 
-# save parameters
+# save parameters, only meant for reference and not for importing in other programs
+# the parameters saved are:
+# dynamical exponent (z=2 for CMB, z=0 for CMA); number of dimensions; lattice spacing; number of lattices; \phi mobility (\lambda_\phi); conserved density (\bar\phi);
+# initial value a (a_0); final value of a (a_\tau); b (free energy constant); \kappa (free energy constant); \beta times free energy density of the homogeneous state; \beta times activity parameter;
+# n mobility (\lambda_n); \gamma (coupling constant); volume; \beta (Boltzmann constant times temperature); activity parameter (\Delta\mu);
+# number of paths; time-step size; number of values of \tau for plotting; approximate minimum horizontal value in the tau plot; approximate maximum horizontal value in the tau plot
 paramFile = open(outputPath+'/parameters.dat','a')
 if os.path.getsize(outputPath+'/parameters.dat') == 0:
     paramFile.write('z='+str(z)+'\ndim='+str(dim)+'\ndl='+str(dl)+'\nNl='+str(Nl)+'\nmob_phi='+str(mob_phi)+'\nphibar='+str(phibar)+'\n')
@@ -452,6 +457,18 @@ for i in range(0,tauPoints):
         xFile.flush()
     
     # save data
+    # from left to right, the data saved for each path is:
+    #1  - the global spatial average of the field \phi;
+    #2  - \beta times internal energy at t = 0;
+    #3  - \beta times internal energy at t = \tau
+    #4  - \beta times difference between internal energies at t = \tau and t = 0
+    #5  - \beta times external work;
+    #6  - \beta times active work during protocol;
+    #7  - \beta times protocol heat;
+    #8  - \beta times internal energy at t = \tau + \tau_R
+    #9  - \beta times difference between internal energies at t = \tau + \tau_R and t = 0
+    #10 - \beta times active work after the protocol;
+    #11 - \beta times total heat.
     for p in range(0,Np):
         xFile.write( str( '{:e}'.format(          phiAvg[p] ) )              + ' '  ) #1.phiAvg
         xFile.write( str( '{:e}'.format(  beta* intEzero[p] ) )              + ' '  ) #2.intEzero
